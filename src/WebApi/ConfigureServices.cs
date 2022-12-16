@@ -23,18 +23,23 @@ public static class ConfigureServices
             .AddDbContextCheck<ApplicationDbContext>();
 
         services.AddControllersWithViews(options =>
-            options.Filters.Add<ApiExceptionFilterAttribute>())
-                .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+            options.Filters.Add<ApiExceptionFilterAttribute>());
+
+        services
+            .AddFluentValidationAutoValidation()
+            .AddFluentValidationClientsideAdapters();
 
         services.AddRazorPages();
 
-        // Customize default API behavior
+        // Customize default API behavior.
         services.Configure<ApiBehaviorOptions>(options =>
-            options.SuppressModelStateInvalidFilter = true);
+        {
+            options.SuppressModelStateInvalidFilter = true;
+        });
 
         services.AddOpenApiDocument(configure =>
         {
-            configure.Title = "JsonTaylor API";
+            configure.Title = "DotnetBoilerplate API";
             configure.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
             {
                 Type = OpenApiSecuritySchemeType.ApiKey,
@@ -45,6 +50,9 @@ public static class ConfigureServices
 
             configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
         });
+
+        // Routing.
+        services.AddRouting(options => { options.LowercaseUrls = true; });
 
         return services;
     }
