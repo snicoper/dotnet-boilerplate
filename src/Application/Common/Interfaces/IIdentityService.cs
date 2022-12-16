@@ -1,4 +1,6 @@
-﻿namespace DotnetBoilerplate.Application.Common.Interfaces;
+using DotnetBoilerplate.Application.Common.Models;
+
+namespace DotnetBoilerplate.Application.Common.Interfaces;
 
 public interface IIdentityService
 {

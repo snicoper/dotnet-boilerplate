@@ -1,3 +1,4 @@
+using DotnetBoilerplate.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
@@ -5,7 +6,7 @@ using System.Diagnostics;
 namespace DotnetBoilerplate.Application.Common.Behaviours;
 
 public class PerformanceBehaviour<TRequest, TResponse>
-    : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+    : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     private readonly Stopwatch _timer;
     private readonly ILogger<TRequest> _logger;
@@ -26,8 +27,8 @@ public class PerformanceBehaviour<TRequest, TResponse>
 
     public async Task<TResponse> Handle(
         TRequest request,
-        CancellationToken cancellationToken,
-        RequestHandlerDelegate<TResponse> next)
+        RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken)
     {
         _timer.Start();
 

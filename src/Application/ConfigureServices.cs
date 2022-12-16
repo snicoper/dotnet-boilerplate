@@ -1,3 +1,4 @@
+using DotnetBoilerplate.Application.Common.Behaviours;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

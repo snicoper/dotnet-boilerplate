@@ -1,5 +1,6 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using DotnetBoilerplate.Application.Common.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DotnetBoilerplate.Application.Common.Mappings;

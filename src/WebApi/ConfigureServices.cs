@@ -1,4 +1,8 @@
+using DotnetBoilerplate.Application.Common.Interfaces;
+using DotnetBoilerplate.Infrastructure.Persistence;
+using DotnetBoilerplate.WebApi.Filters;
 using DotnetBoilerplate.WebApi.Services;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using NSwag;
 using NSwag.Generation.Processors.Security;
@@ -7,7 +11,7 @@ namespace DotnetBoilerplate.WebApi;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddWebUIServices(this IServiceCollection services)
+    public static IServiceCollection AddWebApiServices(this IServiceCollection services)
     {
         services.AddDatabaseDeveloperPageExceptionFilter();
 
