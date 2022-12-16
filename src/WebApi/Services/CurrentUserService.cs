@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+using DotnetBoilerplate.Application.Common.Interfaces;
+using System.Security.Claims;
 
 namespace DotnetBoilerplate.WebApi.Services;
 

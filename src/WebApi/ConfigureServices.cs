@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NSwag.Generation.Processors.Security;
-using NSwag;
 using DotnetBoilerplate.WebApi.Services;
+using Microsoft.AspNetCore.Mvc;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 
 namespace DotnetBoilerplate.WebApi;
 
@@ -36,7 +36,7 @@ public static class ConfigureServices
                 Type = OpenApiSecuritySchemeType.ApiKey,
                 Name = "Authorization",
                 In = OpenApiSecurityApiKeyLocation.Header,
-                Description = "Type into the textbox: Bearer {your JWT token}."
+                Description = "Type into the text box: Bearer {your JWT token}."
             });
 
             configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));

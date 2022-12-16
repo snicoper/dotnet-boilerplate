@@ -1,3 +1,4 @@
+using DotnetBoilerplate.Application.Common.Interfaces;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 

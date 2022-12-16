@@ -1,3 +1,4 @@
+using DotnetBoilerplate.Application.Common.Interfaces;
 using DotnetBoilerplate.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -5,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace DotnetBoilerplate.Infrastructure.Persistence.Interceptors;
 
-ublic class AuditableEntitySaveChangesInterceptor : SaveChangesInterceptor
+public class AuditableEntitySaveChangesInterceptor : SaveChangesInterceptor
 {
     private readonly ICurrentUserService _currentUserService;
     private readonly IDateTime _dateTime;

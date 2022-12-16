@@ -1,5 +1,7 @@
+using DotnetBoilerplate.Application.Common.Interfaces;
 using DotnetBoilerplate.Infrastructure.Common;
 using DotnetBoilerplate.Infrastructure.Identity;
+using DotnetBoilerplate.Infrastructure.Persistence.Interceptors;
 using Duende.IdentityServer.EntityFramework.Options;
 using MediatR;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;

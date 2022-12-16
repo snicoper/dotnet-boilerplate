@@ -1,3 +1,6 @@
+using DotnetBoilerplate.Application.Common.Exceptions;
+using DotnetBoilerplate.Application.Common.Interfaces;
+using DotnetBoilerplate.Application.Common.Security;
 using MediatR;
 using System.Reflection;
 

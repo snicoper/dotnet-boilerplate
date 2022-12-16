@@ -1,4 +1,4 @@
-using System;
+using DotnetBoilerplate.Application.Common.Interfaces;
 
 namespace DotnetBoilerplate.Infrastructure.Services;
 

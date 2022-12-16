@@ -1,3 +1,5 @@
+using DotnetBoilerplate.Application.Common.Interfaces;
+using DotnetBoilerplate.Application.Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

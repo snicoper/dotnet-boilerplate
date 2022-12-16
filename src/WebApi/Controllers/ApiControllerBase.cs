@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetBolerplate.WebApi.Controllers;
 

@@ -1,3 +1,4 @@
+using DotnetBoilerplate.Application.Common.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace DotnetBoilerplate.Infrastructure.Identity;

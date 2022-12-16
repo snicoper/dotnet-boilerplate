@@ -1,9 +1,13 @@
+using DotnetBoilerplate.Application.Common.Interfaces;
+using DotnetBoilerplate.Infrastructure.Identity;
+using DotnetBoilerplate.Infrastructure.Persistence;
+using DotnetBoilerplate.Infrastructure.Persistence.Interceptors;
+using DotnetBoilerplate.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace DotnetBoilerplate.Infrastructure;
 
@@ -25,7 +29,8 @@ public static class ConfigureServices
                     builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }
 
-        services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+        services.AddScoped(provider =>
+            (IApplicationDbContext)provider.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<ApplicationDbContextInitialiser>();
 
