@@ -1,6 +1,6 @@
-﻿namespace DotnetBoilerplate.Application.Common.Interfaces;
+namespace DotnetBoilerplate.Application.Common.Interfaces;
 
 public interface ICurrentUserService
 {
-    string? UserId { get; }
+    string? Id { get; }
 }
