@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dotnetboilerplate.WebApi.Filters;
+namespace DotnetBoilerplate.WebApi.Filters;
 
 public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
 {

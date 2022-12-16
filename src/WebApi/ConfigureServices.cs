@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NSwag.Generation.Processors.Security;
 using NSwag;
+using DotnetBoilerplate.WebApi.Services;
 
-namespace Dotnetboilerpla.WebApi;
+namespace DotnetBoilerplate.WebApi;
 
 public static class ConfigureServices
 {

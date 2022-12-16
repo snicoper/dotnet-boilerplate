@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Dotnetboilerplate.WebApi;
+namespace DotnetBoilerplate.WebApi.Services;
 
 public class CurrentUserService : ICurrentUserService
 {

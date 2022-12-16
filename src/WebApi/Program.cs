@@ -1,4 +1,4 @@
-using Dotnetboilerpla.WebApi;
+using DotnetBoilerplate.WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
