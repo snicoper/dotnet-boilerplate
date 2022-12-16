@@ -15,3 +15,9 @@ indent_size = 4
 
 [*.md]
 trim_trailing_whitespace = false
+
+[*.cs]
+# https://docs.microsoft.com/es-es/visualstudio/ide/editorconfig-code-style-settings-reference
+# https://docs.microsoft.com/es-es/visualstudio/ide/editorconfig-code-style-settings-reference?view=vs-2019
+
+csharp_style_namespace_declarations = file_scoped
