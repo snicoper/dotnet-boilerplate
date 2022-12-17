@@ -58,8 +58,10 @@ app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+// NSwag.
 app.UseOpenApi();
 app.UseSwaggerUi3(settings => { settings.Path = string.Empty; });
+app.UseReDoc(settings => { settings.Path = "/docs"; });
 
 app.UseRouting();
 
