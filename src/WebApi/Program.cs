@@ -36,6 +36,7 @@ app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseOpenApi();
 app.UseSwaggerUi3(settings => { settings.Path = string.Empty; });
 
 app.UseRouting();
