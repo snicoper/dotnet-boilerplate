@@ -20,25 +20,21 @@ public static class ConfigureServices
                    .AsImplementedInterfaces()
                    .WithTransientLifetime());
 
+        // Db configuration.
         services.AddScoped<AuditableEntitySaveChangesInterceptor>();
 
-        if (configuration.GetValue<bool>("UseInMemoryDatabase"))
-        {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseInMemoryDatabase("DotnetBoilerplateDb"));
-        }
-        else
-        {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-                    builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-        }
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        var assembly = typeof(ApplicationDbContext).Assembly.FullName;
+
+        services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(connectionString, b => b.MigrationsAssembly(assembly)));
 
         services.AddScoped(provider =>
             (IApplicationDbContext)provider.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<ApplicationDbContextInitialiser>();
 
+        // Identity.
         services
             .AddDefaultIdentity<ApplicationUser>()
             .AddRoles<IdentityRole>()
