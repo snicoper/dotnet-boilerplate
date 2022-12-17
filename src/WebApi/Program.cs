@@ -2,6 +2,7 @@ using DotnetBoilerplate.Application;
 using DotnetBoilerplate.Infrastructure;
 using DotnetBoilerplate.Infrastructure.Persistence;
 using DotnetBoilerplate.WebApi;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 
@@ -54,7 +55,17 @@ else
 
 app.UseSerilogRequestLogging();
 
-app.UseHealthChecks("/health");
+// HealCheks.
+app.MapHealthChecks("/liveness", new HealthCheckOptions
+{
+    Predicate = r => r.Name.Contains("self")
+});
+
+app.MapHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true
+});
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

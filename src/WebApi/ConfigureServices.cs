@@ -5,6 +5,7 @@ using DotnetBoilerplate.WebApi.Services;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 
@@ -26,7 +27,10 @@ public static class ConfigureServices
 
         services.AddHttpContextAccessor();
 
-        services.AddHealthChecks()
+        // HealthChecks.
+        services
+            .AddHealthChecks()
+            .AddCheck("self", () => HealthCheckResult.Healthy())
             .AddDbContextCheck<ApplicationDbContext>();
 
         services.AddControllersWithViews(options =>
