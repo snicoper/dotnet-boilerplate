@@ -2,8 +2,28 @@ using DotnetBoilerplate.Application;
 using DotnetBoilerplate.Infrastructure;
 using DotnetBoilerplate.Infrastructure.Persistence;
 using DotnetBoilerplate.WebApi;
+using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder
+    .Host
+    .UseSerilog((hostingContext, loggerConfiguration) =>
+    {
+        loggerConfiguration
+            .ReadFrom.Configuration(hostingContext.Configuration)
+            .Enrich.FromLogContext()
+            .WriteTo.Console(
+                outputTemplate:
+                "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}",
+                theme: AnsiConsoleTheme.Literate);
+
+        if (!hostingContext.HostingEnvironment.IsDevelopment())
+        {
+            loggerConfiguration.WriteTo.File("web_api_log.txt");
+        }
+    });
 
 // Add services to the container.
 builder.Services.AddApplicationServices();
@@ -31,6 +51,8 @@ else
     // see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseSerilogRequestLogging();
 
 app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
