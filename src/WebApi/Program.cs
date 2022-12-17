@@ -77,7 +77,6 @@ app.UseReDoc(settings => { settings.Path = "/docs"; });
 app.UseRouting();
 
 app.UseAuthentication();
-app.UseIdentityServer();
 app.UseAuthorization();
 
 app.MapControllerRoute(

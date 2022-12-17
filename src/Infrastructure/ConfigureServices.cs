@@ -2,7 +2,6 @@ using DotnetBoilerplate.Application.Common.Interfaces;
 using DotnetBoilerplate.Infrastructure.Identity;
 using DotnetBoilerplate.Infrastructure.Persistence;
 using DotnetBoilerplate.Infrastructure.Persistence.Interceptors;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -40,12 +39,7 @@ public static class ConfigureServices
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
-        services.AddIdentityServer()
-            .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-        services.AddAuthentication()
-            .AddIdentityServerJwt();
-
+        services.AddAuthentication();
         services.AddAuthorization();
 
         return services;
