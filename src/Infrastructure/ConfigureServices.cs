@@ -2,7 +2,6 @@ using DotnetBoilerplate.Application.Common.Interfaces;
 using DotnetBoilerplate.Infrastructure.Identity;
 using DotnetBoilerplate.Infrastructure.Persistence;
 using DotnetBoilerplate.Infrastructure.Persistence.Interceptors;
-using DotnetBoilerplate.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +14,12 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.Scan(scan =>
+               scan.FromCallingAssembly()
+                   .AddClasses(classes => classes.Where(type => type.Name.EndsWith("Service")))
+                   .AsImplementedInterfaces()
+                   .WithTransientLifetime());
+
         services.AddScoped<AuditableEntitySaveChangesInterceptor>();
 
         if (configuration.GetValue<bool>("UseInMemoryDatabase"))
@@ -41,9 +46,6 @@ public static class ConfigureServices
 
         services.AddIdentityServer()
             .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-        services.AddTransient<IDateTime, DateTimeService>();
-        services.AddTransient<IIdentityService, IdentityService>();
 
         services.AddAuthentication()
             .AddIdentityServerJwt();

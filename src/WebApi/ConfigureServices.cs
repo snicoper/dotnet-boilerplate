@@ -15,6 +15,12 @@ public static class ConfigureServices
     {
         services.AddDatabaseDeveloperPageExceptionFilter();
 
+        services.Scan(scan =>
+               scan.FromCallingAssembly()
+                   .AddClasses(classes => classes.Where(type => type.Name.EndsWith("Service")))
+                   .AsImplementedInterfaces()
+                   .WithTransientLifetime());
+
         services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
         services.AddHttpContextAccessor();

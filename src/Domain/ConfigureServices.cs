@@ -1,1 +1,1 @@
-﻿namespace DotnetBoilerplate.Domain;
+namespace DotnetBoilerplate.Domain;
