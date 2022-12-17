@@ -4,6 +4,7 @@ using DotnetBoilerplate.WebApi.Filters;
 using DotnetBoilerplate.WebApi.Services;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 
@@ -55,6 +56,15 @@ public static class ConfigureServices
             });
 
             configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
+        });
+
+        // API versioning.
+        services.AddApiVersioning(options =>
+        {
+            options.ReportApiVersions = true;
+            options.DefaultApiVersion = new ApiVersion(1, 0);
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.ApiVersionReader = new UrlSegmentApiVersionReader();
         });
 
         // Routing.

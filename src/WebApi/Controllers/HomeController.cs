@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetBoilerplate.WebApi.Controllers;
 
-[Route("api/home")]
+[Route("api/v{version:apiVersion}/home")]
 public class HomeController : ApiControllerBase
 {
     private readonly IValidationFailureService _validationFailureService;
