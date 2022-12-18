@@ -26,6 +26,7 @@ public static class ConfigureServices
         services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
         services.AddHttpContextAccessor();
+        services.AddEndpointsApiExplorer();
 
         // HealthChecks.
         services

@@ -44,7 +44,7 @@ public class ApplicationDbContextInitialiser
     {
         try
         {
-            // await TrySeedAsync();
+            await TrySeedAsync();
         }
         catch (Exception ex)
         {
