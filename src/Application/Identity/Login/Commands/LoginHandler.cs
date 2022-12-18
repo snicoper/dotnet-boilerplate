@@ -13,16 +13,11 @@ namespace DotnetBoilerplate.Application.Identity.Login.Commands;
 public class LoginHandler : IRequestHandler<LoginCommand, LoginDto>
 {
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly IConfiguration _configuration;
 
-    public LoginHandler(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
-        IConfiguration configuration)
+    public LoginHandler(UserManager<ApplicationUser> userManager, IConfiguration configuration)
     {
         _userManager = userManager;
-        _signInManager = signInManager;
         _configuration = configuration;
     }
 
@@ -32,13 +27,6 @@ public class LoginHandler : IRequestHandler<LoginCommand, LoginDto>
         var user = await _userManager.FindByNameAsync(request.UserName);
 
         if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password))
-        {
-            throw new ForbiddenAccessException();
-        }
-
-        var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, true);
-
-        if (!result.Succeeded)
         {
             throw new ForbiddenAccessException();
         }
@@ -63,7 +51,7 @@ public class LoginHandler : IRequestHandler<LoginCommand, LoginDto>
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.Now.AddMinutes(720),
+            expires: DateTime.Now.AddDays(30),
             signingCredentials: credentials);
 
         var jwt = new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
