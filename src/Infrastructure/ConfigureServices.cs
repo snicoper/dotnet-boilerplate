@@ -1,5 +1,5 @@
 using DotnetBoilerplate.Application.Common.Interfaces;
-using DotnetBoilerplate.Infrastructure.Identity;
+using DotnetBoilerplate.Domain.Entities.Identity;
 using DotnetBoilerplate.Infrastructure.Persistence;
 using DotnetBoilerplate.Infrastructure.Persistence.Interceptors;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

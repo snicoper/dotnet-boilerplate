@@ -1,6 +1,6 @@
 using DotnetBoilerplate.Application.Common.Interfaces;
+using DotnetBoilerplate.Domain.Entities.Identity;
 using DotnetBoilerplate.Infrastructure.Common;
-using DotnetBoilerplate.Infrastructure.Identity;
 using DotnetBoilerplate.Infrastructure.Persistence.Interceptors;
 using MediatR;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

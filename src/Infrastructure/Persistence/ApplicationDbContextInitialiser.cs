@@ -1,4 +1,4 @@
-using DotnetBoilerplate.Infrastructure.Identity;
+using DotnetBoilerplate.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
