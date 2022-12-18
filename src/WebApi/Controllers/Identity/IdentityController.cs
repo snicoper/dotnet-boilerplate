@@ -16,6 +16,7 @@ public class IdentityController : ApiControllerBase
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<ActionResult<LoginDto>> Login(LoginCommand command)
     {
         return await Mediator.Send(command);

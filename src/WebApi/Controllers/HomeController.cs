@@ -6,8 +6,10 @@ namespace DotnetBoilerplate.WebApi.Controllers;
 [Route("api/v{version:apiVersion}/home")]
 public class HomeController : ApiControllerBase
 {
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<string> Hello()
     {
-        return "Hello world 23";
+        return "Home controller";
     }
 }
