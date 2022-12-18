@@ -70,7 +70,6 @@ public class LoginHandler : IRequestHandler<LoginCommand, LoginDto>
 
         return new LoginDto
         {
-            Success = true,
             Token = jwt
         };
     }
