@@ -12,9 +12,7 @@ public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRe
     private readonly ICurrentUserService _currentUserService;
     private readonly IIdentityService _identityService;
 
-    public AuthorizationBehaviour(
-        ICurrentUserService currentUserService,
-        IIdentityService identityService)
+    public AuthorizationBehaviour(ICurrentUserService currentUserService, IIdentityService identityService)
     {
         _currentUserService = currentUserService;
         _identityService = identityService;

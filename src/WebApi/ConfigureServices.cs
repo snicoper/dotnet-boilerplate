@@ -41,8 +41,6 @@ public static class ConfigureServices
             .AddFluentValidationAutoValidation()
             .AddFluentValidationClientsideAdapters();
 
-        services.AddRazorPages();
-
         // Customize default API behavior.
         services.Configure<ApiBehaviorOptions>(options =>
         {

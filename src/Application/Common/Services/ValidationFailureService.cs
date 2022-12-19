@@ -2,7 +2,7 @@ using DotnetBoilerplate.Application.Common.Exceptions;
 using DotnetBoilerplate.Application.Common.Interfaces;
 using FluentValidation.Results;
 
-namespace DotnetBoilerplate.WebApi.Services;
+namespace DotnetBoilerplate.Application.Common.Services;
 
 public class ValidationFailureService : IValidationFailureService
 {
