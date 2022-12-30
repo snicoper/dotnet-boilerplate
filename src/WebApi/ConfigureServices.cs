@@ -13,6 +13,8 @@ namespace DotnetBoilerplate.WebApi;
 
 public static class ConfigureServices
 {
+    private const string DefaultCors = "DefaultCors";
+
     public static IServiceCollection AddWebApiServices(this IServiceCollection services)
     {
         services.AddDatabaseDeveloperPageExceptionFilter();
@@ -72,6 +74,19 @@ public static class ConfigureServices
 
         // Routing.
         services.AddRouting(options => { options.LowercaseUrls = true; });
+
+        // Cors.
+        services.AddCors(options =>
+        {
+            options.AddPolicy(DefaultCors, builder =>
+            {
+                builder
+                .WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+            });
+        });
 
         return services;
     }

@@ -1,4 +1,5 @@
 using DotnetBolerplate.WebApi.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetBoilerplate.WebApi.Controllers;
@@ -7,9 +8,10 @@ namespace DotnetBoilerplate.WebApi.Controllers;
 public class HomeController : ApiControllerBase
 {
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public ActionResult<string> Hello()
+    public ActionResult<List<string>> Hello()
     {
-        return "Home controller";
+        return Ok(new List<string> { "Hello world 12", "Bye world" });
     }
 }

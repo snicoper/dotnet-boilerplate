@@ -75,6 +75,7 @@ app.UseSwaggerUi3(settings => { settings.Path = string.Empty; });
 app.UseReDoc(settings => { settings.Path = "/docs"; });
 
 app.UseRouting();
+app.UseCors("DefaultCors");
 
 app.UseAuthentication();
 app.UseAuthorization();
