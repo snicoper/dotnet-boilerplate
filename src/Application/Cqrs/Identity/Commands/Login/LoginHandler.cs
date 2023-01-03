@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace DotnetBoilerplate.Application.Identity.Login.Commands;
+namespace DotnetBoilerplate.Application.Cqrs.Identity.Commands.Login;
 
 public class LoginHandler : IRequestHandler<LoginCommand, LoginDto>
 {

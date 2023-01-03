@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace DotnetBoilerplate.Application.Identity.Login.Commands;
+namespace DotnetBoilerplate.Application.Cqrs.Identity.Commands.Login;
 
 public class LoginCommand : IRequest<LoginDto>
 {

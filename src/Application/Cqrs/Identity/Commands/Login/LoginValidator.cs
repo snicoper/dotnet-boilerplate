@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace DotnetBoilerplate.Application.Identity.Login.Commands;
+namespace DotnetBoilerplate.Application.Cqrs.Identity.Commands.Login;
 
 public class LoginValidator : AbstractValidator<LoginCommand>
 {

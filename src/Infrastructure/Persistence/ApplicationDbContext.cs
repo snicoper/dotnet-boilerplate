@@ -1,4 +1,5 @@
 using DotnetBoilerplate.Application.Common.Interfaces;
+using DotnetBoilerplate.Domain.Entities;
 using DotnetBoilerplate.Domain.Entities.Identity;
 using DotnetBoilerplate.Infrastructure.Common;
 using DotnetBoilerplate.Infrastructure.Persistence.Interceptors;
@@ -13,6 +14,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
 {
     private readonly IMediator _mediator;
     private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
+
+    public DbSet<Person> Persons { get; set; }
 
     public ApplicationDbContext(
         DbContextOptions<ApplicationDbContext> options,

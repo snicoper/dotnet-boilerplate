@@ -1,3 +1,4 @@
+using DotnetBoilerplate.Domain.Entities;
 using DotnetBoilerplate.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -85,5 +86,26 @@ public class ApplicationDbContextInitialiser
 
         // Default data
         // Seed, if necessary
+        await CreatePersonsDataAsync();
+    }
+
+    private async Task CreatePersonsDataAsync()
+    {
+        if (_context.Persons.Any())
+        {
+            return;
+        }
+
+        var persons = new List<Person>
+        {
+            new Person{ FirstName = "Adam1", LastName = "Prueba", Email = "adam1@example.com" },
+            new Person{ FirstName = "Adam2", LastName = "Prueba", Email = "adam2@example.com" },
+            new Person{ FirstName = "Adam3", LastName = "Prueba", Email = "adam3@example.com" },
+            new Person{ FirstName = "Adam4", LastName = "Prueba", Email = "adam4@example.com" },
+            new Person{ FirstName = "Adam5", LastName = "Prueba", Email = "adam5@example.com" }
+        };
+
+        await _context.Persons.AddRangeAsync(persons);
+        await _context.SaveChangesAsync(CancellationToken.None);
     }
 }

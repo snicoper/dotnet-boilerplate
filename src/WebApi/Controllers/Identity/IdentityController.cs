@@ -1,4 +1,4 @@
-using DotnetBoilerplate.Application.Identity.Login.Commands;
+using DotnetBoilerplate.Application.Cqrs.Identity.Commands.Login;
 using DotnetBolerplate.WebApi.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
