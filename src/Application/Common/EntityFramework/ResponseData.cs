@@ -26,7 +26,10 @@ public class ResponseData<TDto> : RequestData
         CancellationToken cancellationToken)
         where TEntity : BaseEntity
     {
-        var totalItems = await source.Filter(request).Ordering(request).CountAsync(cancellationToken);
+        var totalItems = await source
+            .Filter(request)
+            .Ordering(request)
+            .CountAsync(cancellationToken);
 
         var items = await source
             .Filter(request)
@@ -36,16 +39,6 @@ public class ResponseData<TDto> : RequestData
             .AsNoTracking()
             .ToListAsync(cancellationToken);
 
-        var itemsDto = mapper.Map<List<TDto>>(items);
-
-        return CreateResponseDataFromResult(request, itemsDto, totalItems);
-    }
-
-    private static ResponseData<TDto> CreateResponseDataFromResult(
-        RequestData request,
-        IEnumerable<TDto> items,
-        int totalItems)
-    {
         return new()
         {
             TotalItems = totalItems,
@@ -53,7 +46,7 @@ public class ResponseData<TDto> : RequestData
             TotalPages = CalculateTotalPages(totalItems, request.PageSize),
             Ratio = request.Ratio,
             PageSize = request.PageSize,
-            Items = items,
+            Items = mapper.Map<List<TDto>>(items),
             Orders = request.Orders,
             Filters = request.Filters
         };

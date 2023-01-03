@@ -22,7 +22,7 @@ public class GetPersonsPaginateDto : IMapFrom<Person>
             .CreateMap<Person, GetPersonsPaginateDto>()
             .ForMember(
                 dest => dest.FullName,
-                act => act.MapFrom(src => $"{src.LastName}, {src.FirstName}"));
+                opt => opt.MapFrom(src => $"{src.LastName}, {src.FirstName}"));
 
     }
 }
